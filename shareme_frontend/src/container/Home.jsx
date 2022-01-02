@@ -40,13 +40,15 @@ const Home = () => {
                 <Sidebar user={user && user} />
             </div>
             <div className='flex md:hidden flex-row'>
-                <HiMenu fontSize={40} className='cursor-pointer' onClick={() => setToggleSidebar(true)} />
-                <Link to="/">
-                    <img src={logo} alt="logo" className='w-28' />
-                </Link>
-                <Link to={`user-profile/${user?.id}`}>
-                    <img src={user?.image} alt="logo" className='w-28' />
-                </Link>
+                <div className='p-2 w-full flex flex-row justify-between items-center shadow-md'>
+                    <HiMenu fontSize={40} className='cursor-pointer' onClick={() => setToggleSidebar(true)} />
+                    <Link to="/">
+                        <img src={logo} alt="logo" className='w-28' />
+                    </Link>
+                    <Link to={`user-profile/${user?.id}`}>
+                        <img src={user?.image} alt="logo" className='w-28' />
+                    </Link>
+                </div>
             </div>
             {toggleSidebar && (
                 <div className='fixed w-4/5 bg-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in'>
@@ -57,7 +59,10 @@ const Home = () => {
                 </div>
             )}
             <div className='pb-2 flex-1 h-screen overflow-y-scroll' ref={scrollRef}>
-
+                <Routes>
+                    <Route path="/user-profile/:userId" element={<UserProfile />} />
+                    <Route path="/*" element={<Pins user={user && user} />} />
+                </Routes>
             </div>
         </div>
     )
