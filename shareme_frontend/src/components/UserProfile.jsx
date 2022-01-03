@@ -59,16 +59,16 @@ const UserProfile = () => {
                         <img
                             src={randomImage}
                             className='w-full h-370 2xl:h-510 shadow-lg object-cover'
-                            alt="banner-image" />
+                            alt="banner" />
                         <img
                             src={user.image}
                             className='rounded-full h-20 w-20 -mt-10 shadow-xl object-cover'
-                            alt="user-image" />
+                            alt="user" />
                         <h1 className='font-bold text-3xl text-center mt-3'>
                             {user.userName}
                         </h1>
                         <div className='absolute top-0 z-1 right-0 p-2'>
-                            {userId == user._id && (
+                            {userId === user._id && (
                                 <GoogleLogout
                                     clientId={process.env.REACT_APP_GOOGLE_API_TOKEN}
                                     render={(renderProps) => (
